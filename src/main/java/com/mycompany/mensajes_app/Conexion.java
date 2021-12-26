@@ -14,10 +14,10 @@ import java.sql.SQLException;
  * @author oscar
  */
 public class Conexion {
+    public static  Connection connection;
     
-    
-    public Connection getConnection(){
-        Connection connection = null;
+      public static Connection getConnection(){
+      
         
         try{
             connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/mensajes_app", "oscar", "toor");
@@ -30,6 +30,15 @@ public class Conexion {
         
         return connection;
     }
+      
+      public static boolean verifyConnection(){
+          if(connection != null)
+              return true;
+          else
+              return false;
+      }
+      
+      
     
     
 }

@@ -6,6 +6,7 @@
 package com.mycompany.mensajes_app;
 
 import java.sql.Connection;
+import java.util.Scanner;
 
 /**
  *
@@ -13,15 +14,59 @@ import java.sql.Connection;
  */
 public class Inicio {
     
+    public final static void clearConsole()
+        {
+            try
+            {
+                final String os = System.getProperty("os.name");
+
+                if (os.contains("Windows"))
+                {
+                    Runtime.getRuntime().exec("cls");
+                }
+                else
+                {
+                    Runtime.getRuntime().exec("clear");
+                }
+            }
+            catch (final Exception e)
+            {
+                //  Handle any exceptions.
+            }
+        }
+    
     
     public static void main(String[] args) {
-        Conexion conexion = new Conexion();
         
+        Scanner sc = new Scanner(System.in);
         
-        try(Connection cnx = conexion.getConnection()){
+        int opcion;
+        
+        do { 
+            clearConsole();
+            System.out.println("--------------");
+            System.out.println(" App message ");
+            System.out.println("1. Create Message ");
+            System.out.println("2. List messages ");
+            System.out.println("3. Edit message ");
+            System.out.println("4. delete message ");
+            System.out.println("5. Exit ");
             
-        } catch(Exception e){
-            System.out.println(e);
-        }
+            opcion = sc.nextInt();
+            
+            switch(opcion){
+                case 1:
+                    MessageServices.createMessage();
+                    break;
+                case 2:
+                    MessageServices.printMessages();
+                    break;
+                case 4:
+                    MessageServices.deleteMessage();
+                    break;
+                
+            }
+            
+        } while (opcion != 5);
     }
 }
