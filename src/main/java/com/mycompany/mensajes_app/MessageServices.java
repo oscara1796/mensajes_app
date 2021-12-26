@@ -62,4 +62,18 @@ public class MessageServices {
         
     }
     
+    
+    public static void updateMessage(){
+        
+       Scanner sc = new Scanner(System.in);
+        System.out.println(" Escribe el ID del  mensaje a actualizar");
+        String id = sc.nextLine();
+        System.out.println(" Escribe el mensaje ");
+        String message = sc.nextLine();
+        
+        MessagesDAO.updateMessage(message,Integer.valueOf(id));
+        
+        
+    }
+    
 }

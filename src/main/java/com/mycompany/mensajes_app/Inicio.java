@@ -61,6 +61,9 @@ public class Inicio {
                 case 2:
                     MessageServices.printMessages();
                     break;
+                case 3:
+                    MessageServices.updateMessage();
+                    break;
                 case 4:
                     MessageServices.deleteMessage();
                     break;
